@@ -36,6 +36,25 @@ document.getElementById("numero").addEventListener("input", function (e) {
   }
 });
 
+const inputPesquisa = document.getElementById("inputPesquisa");
+const table = document.getElementById("table");
+
+inputPesquisa.addEventListener("keyup", function () {
+  const termo = inputPesquisa.value.trim().toLowerCase();
+
+  const linhas = table.querySelectorAll("tr");
+
+  linhas.forEach(function (linha) {
+    if (linha === linhas[0]) return;
+    const textoDaLinha = linha.textContent.toLowerCase();
+
+    if (textoDaLinha.includes(termo)) {
+      linha.style.display = "";
+    } else {
+      linha.style.display = "none";
+    }
+  });
+});
 //função para preencher formulário de edição
 async function fillEditForm(id) {
   const response = await fetch(`http://localhost:3000/data.json/${id}`);
