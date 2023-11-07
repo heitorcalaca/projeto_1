@@ -1,6 +1,6 @@
 [
   {
-    "numero": "11",
+    "numero": "10",
     "nome": "Margarida",
     "caracteristica": "Amarela",
     "dataNascimento": "2023-06-19",
@@ -20,5 +20,49 @@
     "nomePai": "321",
     "situacaoMae": "Morreu",
     "nomeMae": "Maria"
+  },
+  {
+    "numero": "12",
+    "nome": "Melanina",
+    "caracteristica": "Amarela",
+    "dataNascimento": "2023-06-19",
+    "proprietario": "Heitor",
+    "situacao": "Normal",
+    "nomePai": "321",
+    "situacaoMae": "Morreu",
+    "nomeMae": "Maria"
+  },
+  {
+    "numero": "12",
+    "nome": "Melanina",
+    "caracteristica": "Amarela",
+    "dataNascimento": "2023-06-19",
+    "proprietario": "Heitor",
+    "situacao": "Normal",
+    "nomePai": "321",
+    "situacaoMae": "Morreu",
+    "nomeMae": "Maria"
+  },
+  {
+    "numero": "1",
+    "nome": "1",
+    "caracteristicas": "1",
+    "dataNascimento": "0001-01-01",
+    "proprietario": "1",
+    "situacao": "1",
+    "nomePai": "1",
+    "nomeMae": "1",
+    "situacaoMae": "1"
+  },
+  {
+    "numero": "1",
+    "nome": "1",
+    "caracteristicas": "1",
+    "dataNascimento": "0001-01-01",
+    "proprietario": "1",
+    "situacao": "1",
+    "nomePai": "1",
+    "nomeMae": "1",
+    "situacaoMae": "1"
   }
 ]

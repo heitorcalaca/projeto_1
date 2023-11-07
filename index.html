@@ -51,13 +51,14 @@
             </a>
             <h1>Cadastrar Nova Matriz</h1>
           </header>
-          <form>
+          <form id="formNova">
             <div class="form-columns">
               <div class="input-group">
                 <label for="numero">Número</label>
                 <input
                   type="number"
                   id="numero"
+                  name="numero"
                   placeholder="número da matriz"
                   required
                 />
@@ -67,13 +68,14 @@
                 <input
                   type="text"
                   id="nome"
+                  name="nome"
                   placeholder="nome da matriz"
                   required
                 />
               </div>
               <div class="input-group">
                 <label for="caracteristicas">Características</label>
-                <select id="caracteristicas" required>
+                <select id="caracteristicas" name="caracteristicas" required>
                   <option value="1">Característica 1</option>
                   <option value="2">Característica 2</option>
                   <option value="3">Característica 3</option>
@@ -84,6 +86,7 @@
                 <input
                   type="date"
                   id="dataNascimento"
+                  name="dataNascimento"
                   placeholder="data de nascimento"
                   required
                 />
@@ -93,13 +96,14 @@
                 <input
                   type="text"
                   id="proprietario"
+                  name="proprietario"
                   placeholder="Proprietário"
                   required
                 />
               </div>
               <div class="input-group">
                 <label for="situacao">Situação</label>
-                <select id="situacao" required>
+                <select id="situacao" name="situacao" required>
                   <option value="1">Normal</option>
                   <option value="2">Morreu</option>
                   <option value="2">Sumiu</option>
@@ -111,6 +115,7 @@
                 <input
                   type="text"
                   id="nomePai"
+                  name="nomePai"
                   placeholder="Nome do Pai"
                   required
                 />
@@ -120,13 +125,14 @@
                 <input
                   type="text"
                   id="nomeMae"
+                  name="nomeMae"
                   placeholder="Nome da Mãe"
                   required
                 />
               </div>
               <div class="input-group" style="flex: 0 calc(50% - 20px)">
                 <label for="situacaoMae">Situação da Mãe</label>
-                <select id="situacaoMae" required>
+                <select id="situacaoMae" name="situacaoMae" required>
                   <option value="1">Normal</option>
                   <option value="2">Morreu</option>
                   <option value="2">Sumiu</option>

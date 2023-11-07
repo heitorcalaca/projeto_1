@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   fillTable("./data.json", "tBody");
 });
 
+document
+  .getElementById("formNova")
+  .addEventListener("submit", handleFormSubmit);
+
+//função para preencher a tabela
 async function fillTable(url, tableId) {
   const response = await fetch(url);
   const data = await response.json();
@@ -28,5 +33,34 @@ async function fillTable(url, tableId) {
             </button>
           </a>`;
     tbody.appendChild(tr);
+  });
+}
+
+//função para adicionar um novo registro
+async function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+
+  const response = await sendDataToServer(data);
+
+  if (response.ok) {
+    console.log("Registro adicionado com sucesso!");
+    alert("Registro adicionado com sucesso!");
+    window.location.reload();
+  } else {
+    alert("Erro ao adicionar registro!");
+  }
+}
+
+//função para enviar os dados para o servidor
+async function sendDataToServer(data) {
+  return await fetch("http://localhost:3000/data.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
   });
 }
