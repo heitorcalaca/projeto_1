@@ -1,0 +1,24 @@
+[
+  {
+    "numero": "11",
+    "nome": "Margarida",
+    "caracteristica": "Amarela",
+    "dataNascimento": "2023-06-19",
+    "proprietario": "Heitor",
+    "situacao": "Normal",
+    "nomePai": "321",
+    "situacaoMae": "Morreu",
+    "nomeMae": "Maria"
+  },
+  {
+    "numero": "10",
+    "nome": "Margarida",
+    "caracteristica": "Amarela",
+    "dataNascimento": "2023-06-19",
+    "proprietario": "Heitor",
+    "situacao": "Normal",
+    "nomePai": "321",
+    "situacaoMae": "Morreu",
+    "nomeMae": "Maria"
+  }
+]

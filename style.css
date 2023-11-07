@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: hsla(0, 0%, 100%, 0);
+  padding: 20px;
+  text-align: center;
+  color: #525252;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: x-large;
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, 0.7);
+  transition: all 0.4s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 4px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.modal-content header {
+  column-count: 1;
+  font-size: small;
+  padding: 0px;
+}
+
+.modal-content .fechar {
+  position: relative;
+  float: right;
+}
+
+.form-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-columns .input-group {
+  flex: 1 calc(50% - 20px);
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  float: left;
+  font-size: 14px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.4s;
+}
+.table {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-collapse: collapse;
+}
+.table thead {
+  background-color: #298128;
+  color: #fff;
+}
+.table th {
+  padding: 14px 0px;
+  text-align: center;
+}
+.table td {
+  padding: 10px;
+  text-align: center;
+}
+.table tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.btn {
+  background-color: #298128;
+  border: none;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.btn-cadastrar {
+  margin-left: 10%;
+  padding: 10px 20px;
+}
+
+.btn-salvar {
+  padding: 10px 20px;
+  width: 50%;
+  margin: auto;
+  cursor: pointer;
+}
+.btn-editar {
+  padding: 5px 8px;
+  color: #298128;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-excluir {
+  padding: 5px 8px;
+  color: red;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.inputPesquisa {
+  float: right;
+  margin-right: 10%;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.row-acao {
+  display: flex;
+  justify-content: center;
+}
+
+.row-acao a {
+  text-decoration: none;
+  margin: 0 5px;
+}
