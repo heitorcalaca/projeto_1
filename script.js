@@ -6,6 +6,10 @@ document
   .getElementById("formNova")
   .addEventListener("submit", handleFormSubmit);
 
+document
+  .getElementById("formEdita")
+  .addEventListener("submit", handleEditSubmmit);
+
 document.addEventListener(
   "click",
   async function (event) {
@@ -17,9 +21,12 @@ document.addEventListener(
   false
 );
 
-// document
-//   .getElementById("formEdicao")
-//   .addEventListener("submit", handleEditSubmmit);
+document.addEventListener("click", async function (event) {
+  if (event.target.closest(".btn-editar")) {
+    const id = event.target.closest(".btn-editar").getAttribute("data-id");
+    await fillEditForm(id);
+  }
+});
 
 document.getElementById("numero").addEventListener("input", function (e) {
   if (e.target.value.length < 3) {
@@ -33,6 +40,39 @@ document.getElementById("numero").addEventListener("input", function (e) {
 async function fillEditForm(id) {
   const response = await fetch(`http://localhost:3000/data.json/${id}`);
   const data = await response.json();
+
+  const form = document.getElementById("formEdita");
+
+  form.elements["id"].value = data.id;
+  form.elements["numero"].value = data.numero;
+  form.elements["nome"].value = data.nome;
+  form.elements["proprietario"].value = data.proprietario;
+
+  const situacaoSelect = form.elements["situacao"];
+  const situacaoOption = Array.from(situacaoSelect.options).find(
+    (option) => option.text === data.situacao
+  );
+  if (situacaoOption) {
+    situacaoSelect.value = situacaoOption.value;
+  }
+  const caracteristicasSelect = form.elements["caracteristicas"];
+  const caracteristicasOption = Array.from(caracteristicasSelect.options).find(
+    (option) => option.text === data.caracteristicas
+  );
+  if (caracteristicasOption) {
+    caracteristicasSelect.value = caracteristicasOption.value;
+  }
+  const situacaoMaeSelect = form.elements["situacaoMae"];
+  const situacaoMaeOption = Array.from(situacaoMaeSelect.options).find(
+    (option) => option.text === data.situacaoMae
+  );
+  if (situacaoMaeOption) {
+    situacaoMaeSelect.value = situacaoMaeOption.value;
+  }
+
+  form.elements["dataNascimento"].value = data.dataNascimento;
+  form.elements["nomeMae"].value = data.nomeMae;
+  form.elements["nomePai"].value = data.nomePai;
 }
 
 //função para preencher a tabela
@@ -52,7 +92,7 @@ async function fillTable(url, tableId) {
             <td>${obj.situacao || "Unknown"}</td>
             <td class="row-acao">
             <a href="#modalEdicao">
-            <button class="btn btn-editar">
+            <button class="btn btn-editar" data-id="${obj.id}">
               <span class="material-icons">edit</span>
             </button>
           </a>
@@ -83,7 +123,7 @@ async function handleFormSubmit(event) {
   const selectElement3 = document.getElementById("situacaoMae");
   data.situacaoMae = selectElement3.options[selectElement3.selectedIndex].text;
 
-  const response = await sendDataToServer(data);
+  const response = await newData(data);
 
   if (response.ok) {
     console.log("Registro adicionado com sucesso!");
@@ -91,31 +131,6 @@ async function handleFormSubmit(event) {
     window.location.href = "#";
   } else {
     alert("Erro ao adicionar registro!");
-  }
-}
-
-//função para enviar os dados para o servidor
-async function sendDataToServer(data) {
-  return await fetch("http://localhost:3000/data.json", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-}
-
-//função para excluir um registro
-async function deleteData(id) {
-  const response = await fetch(`http://localhost:3000/data.json/${id}`, {
-    method: "DELETE",
-  });
-
-  if (response.ok) {
-    alert("Registro excluído com sucesso!");
-    window.location.href = "#";
-  } else {
-    alert("Erro ao excluir registro!");
   }
 }
 
@@ -146,11 +161,34 @@ async function handleEditSubmmit(event) {
 }
 
 async function editData(id, data) {
-  const response = await fetch(`http://localhost:3000/data.json/${id}`, {
+  return await fetch(`http://localhost:3000/data.json/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
+}
+
+async function newData(data) {
+  return await fetch("http://localhost:3000/data.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+//função para excluir um registro
+async function deleteData(id) {
+  const response = await fetch(`http://localhost:3000/data.json/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    alert("Registro excluído com sucesso!");
+    window.location.href = "#";
+  } else {
+    alert("Erro ao excluir registro!");
+  }
 }

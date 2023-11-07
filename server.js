@@ -63,7 +63,6 @@ app.post("/data.json", (req, res) => {
   });
 });
 
-//falta terminar
 app.put("/data.json/:id", (req, res) => {
   const id = req.params.id;
 
@@ -88,9 +87,22 @@ app.put("/data.json/:id", (req, res) => {
     }
 
     // Atualize o item no array
-    console.log(jsonData[index]);
+
     jsonData[index] = req.body;
-    console.log(jsonData[index]);
+
+    fs.writeFile(
+      "./data.json",
+      JSON.stringify(jsonData, null, 2),
+      "utf8",
+      (writeErr) => {
+        if (writeErr) {
+          console.log("Error writing file:", writeErr);
+          return res.status(500).send("Erro ao atualizar o arquivo");
+        }
+
+        res.send("Arquivo atualizado com sucesso");
+      }
+    );
   });
 });
 
